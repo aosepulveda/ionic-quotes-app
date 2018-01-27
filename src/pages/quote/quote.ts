@@ -20,8 +20,8 @@ export class QuotePage {
     this.text = this.navParams.data.text;
   }
 
-  onClose() {
-    this.viewCtrl.dismiss();
+  onClose(remove = false) {
+    this.viewCtrl.dismiss(remove);
   }
 
 }
