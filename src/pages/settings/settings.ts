@@ -14,15 +14,11 @@ export class SettingsPage {
     private settingsService: SettingsService) {
   }
 
-  ngOnInit() {
-    this.settingsService.getSettingById("ALTERNATIVE_BACKGROUND");
-  }
-  
-
   onToggle(toggle: Toggle) {
-    this.settingsService.addSetting({
-      id: "ALTERNATIVE_BACKGROUND",
-      value: toggle.checked ? "true" : "false"
-    });  
+    this.settingsService.setBackground(toggle.checked);  
+  }
+
+  checkAltBackground() {
+    return this.settingsService.isAltBackground();
   }
 }

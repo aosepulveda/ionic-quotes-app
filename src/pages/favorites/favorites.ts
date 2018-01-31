@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { Quote } from '../../data/quote.interface';
 import { QuotesService } from '../../services/quotes';
 import { QuotePage } from '../quote/quote';
-import { Setting } from '../../data/settings.interface';
 import { SettingsService } from '../../services/settings';
 
 @IonicPage()
@@ -44,12 +43,8 @@ export class FavoritesPage {
     this.quotes.splice(position, 1);
   }
 
-  activateAlternativeBackground() {
-    this.setting = this.settingsService.getSettingById("ALTERNATIVE_BACKGROUND");
-    console.log(this.setting);
-    if (this.setting == undefined) {
-      return "";
-    }
-    return this.setting.value == "true" ? "quoteBackground" : "";
+  getBackground() {
+    return this.settingsService.isAltBackground() ? "altQuoteBackground" : "quoteBackground";
   }
+
 }
