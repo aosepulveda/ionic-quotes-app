@@ -12,7 +12,6 @@ import { SettingsService } from '../../services/settings';
 })
 export class FavoritesPage {
   quotes: Quote[];
-  setting: Setting;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -43,8 +42,8 @@ export class FavoritesPage {
     this.quotes.splice(position, 1);
   }
 
-  getBackground() {
-    return this.settingsService.isAltBackground() ? "altQuoteBackground" : "quoteBackground";
+  isAltBackground() {
+    return this.settingsService.isAltBackground();
   }
 
 }
