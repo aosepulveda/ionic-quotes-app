@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { Quote } from '../../data/quote.interface';
 import { QuotesService } from '../../services/quotes';
 import { QuotePage } from '../quote/quote';
+import { Setting } from '../../data/settings.interface';
+import { SettingsService } from '../../services/settings';
 
 @IonicPage()
 @Component({
@@ -11,11 +13,13 @@ import { QuotePage } from '../quote/quote';
 })
 export class FavoritesPage {
   quotes: Quote[];
+  setting: Setting;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private quotesService: QuotesService,
-    private modalCtrl: ModalController) {
+    private modalCtrl: ModalController,
+    private settingsService: SettingsService) {
   }
 
   ionViewWillEnter() {
@@ -40,4 +44,12 @@ export class FavoritesPage {
     this.quotes.splice(position, 1);
   }
 
+  activateAlternativeBackground() {
+    this.setting = this.settingsService.getSettingById("ALTERNATIVE_BACKGROUND");
+    console.log(this.setting);
+    if (this.setting == undefined) {
+      return "";
+    }
+    return this.setting.value == "true" ? "quoteBackground" : "";
+  }
 }
