@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavParams, AlertController } from 'ionic-angular';
 import { Quote } from '../../data/quote.interface';
 import { QuotesService } from '../../services/quotes';
 
@@ -11,8 +11,7 @@ import { QuotesService } from '../../services/quotes';
 export class QuotesPage implements OnInit {
   quoteGroup: {category: string, quotes: Quote[], icon: string};
 
-  constructor(private navCtrl: NavController, 
-              private navParams: NavParams,
+  constructor(private navParams: NavParams,
               private alertCtrl: AlertController,
               private quotesService: QuotesService) {
   }
